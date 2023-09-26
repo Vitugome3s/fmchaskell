@@ -31,3 +31,8 @@ fib O = O
 fib (S O) = S O
 fib (S (S n)) = sum (fib (S n)) (fib n)
 
+-- Mínimo
+min :: Nat -> Nat -> Nat
+min n O = n
+min (S n) (S m) = S(min n m)
+
