@@ -25,5 +25,9 @@ fact :: Nat -> Nat
 fact O = (S O)
 fact (S n) = mul (S n) (fact n)
 
-
+-- Fibonacci 
+fib :: Nat -> Nat
+fib O = O
+fib (S O) = S O
+fib (S (S n)) = sum (fib (S n)) (fib n)
 
