@@ -46,7 +46,3 @@ min (S n) (S m) = S(min n m)
 max :: Nat -> Nat -> Nat
 max n O = n
 max (S n) (S m) = S(max n m)
-
--- Resto
-
-
