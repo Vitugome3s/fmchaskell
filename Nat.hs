@@ -5,16 +5,17 @@ import Prelude hiding (sum, mult, exp, quot, min, gcd, lcm, div, max, pred, rem)
 data Nat = O | S Nat
     deriving ( Eq , Show )
 
+
 -- Soma
 sum :: Nat -> Nat -> Nat
 sum n O = n
 sum n (S m) = S (sum n m)
 
 -- Subtração
-sub :: Nat -> Nat -> Nat
-sub n O = n
-sub O m = O
-sub (S n) (S m) = sub n m
+monus :: Nat -> Nat -> Nat
+monus n O = n
+monus O m = O
+monus (S n) (S m) = sub n m
 
 -- Multiplicação
 mul :: Nat -> Nat -> Nat
@@ -46,3 +47,29 @@ min (S n) (S m) = S(min n m)
 max :: Nat -> Nat -> Nat
 max n O = n
 max (S n) (S m) = S(max n m)
+
+-- Dobro
+double :: Nat -> Nat
+double O = O
+double (S n) = (S(S(double n)))
+
+-- Quociente 
+quot :: Nat -> Nat -> Nat
+quot n m = quot' n m m
+where
+    quot' :: Nat -> Nat -> Nat -> Nat
+    quot' O O k = S O
+    quot' O m k = O
+    quot' n O k = S (quot' n k k)
+    quot' (S n) (S n) k = quot'n m k
+
+-- Resto
+rem :: Nat -> Nat -> Nat
+rem O n = O
+rem (S m) O = S (rem m O)
+rem m n = rem' m (n * (quot m n))
+  where
+    rem' :: Nat -> Nat -> Nat
+    rem' (S m) (S n) = rem' m n
+    rem' m O = m
+
