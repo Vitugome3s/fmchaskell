@@ -76,3 +76,10 @@ rem m n = rem' m(mul n (quot m n))
 -- Divisão
 div :: Nat -> Nat -> (Nat,Nat)
 div n m = (quot n m, rem n m)
+
+-- Máximo Divisor Comum
+gcd :: Nat -> Nat -> Nat
+gcd n O = n 
+gcd n m = gcd m (rem n m)
+
+
