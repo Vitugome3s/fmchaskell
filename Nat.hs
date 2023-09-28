@@ -15,7 +15,7 @@ sum n (S m) = S (sum n m)
 monus :: Nat -> Nat -> Nat
 monus n O = n
 monus O m = O
-monus (S n) (S m) = sub n m
+monus (S n) (S m) = monus n m
 
 -- Multiplicação
 mul :: Nat -> Nat -> Nat
@@ -55,21 +55,24 @@ double (S n) = (S(S(double n)))
 
 -- Quociente 
 quot :: Nat -> Nat -> Nat
-quot n m = quot' n m m
-where
+quot m n = quot' m n n 
+  where
     quot' :: Nat -> Nat -> Nat -> Nat
     quot' O O k = S O
     quot' O m k = O
-    quot' n O k = S (quot' n k k)
-    quot' (S n) (S n) k = quot'n m k
+    quot' m O k = S (quot' m k k)
+    quot' (S n) (S m) k = quot' n m k
 
 -- Resto
 rem :: Nat -> Nat -> Nat
 rem O n = O
-rem (S m) O = S (rem m O)
-rem m n = rem' m (n * (quot m n))
+rem (S m) O = S(rem m O)
+rem m n = rem' m(mul n (quot m n))
   where
     rem' :: Nat -> Nat -> Nat
-    rem' (S m) (S n) = rem' m n
+    rem' (S m) (S n) = rem' m n 
     rem' m O = m
 
+-- Divisão
+div :: Nat -> Nat -> (Nat,Nat)
+div n m = (quot n m, rem n m)
