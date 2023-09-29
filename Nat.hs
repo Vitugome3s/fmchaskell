@@ -82,4 +82,24 @@ gcd :: Nat -> Nat -> Nat
 gcd n O = n 
 gcd n m = gcd m (rem n m)
 
+-- Mínimo Multiplo Comum
+lcm :: Nat -> Nat -> (Nat, Nat)
+lcm n m = div (mul n m) (gcd n m)
+
+
+-- Defina os operadores booleanos.
+module Bool where
+
+data Bool = False | True
+    deriving ( Eq , Show )
+
+
+if_then_else_ :: Bool -> Nat -> Nat -> Nat
+if_then_else_ False n m = n
+if_then_else_ True n m = m 
+
+
+
+
+
 
