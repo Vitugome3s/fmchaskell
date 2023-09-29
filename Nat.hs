@@ -98,6 +98,12 @@ if_then_else_ :: Bool -> Nat -> Nat -> Nat
 if_then_else_ False n m = n
 if_then_else_ True n m = m 
 
+-- Menor ou igual que
+leq :: Nat -> Nat -> Bool
+leq O m = True
+leq n O = False
+leq (S n) (S m) = leq n m
+
 
 
 
