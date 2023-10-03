@@ -1,7 +1,7 @@
 module ListNat where
 import Nat
 import Bool
-import Prelude hiding (elem, sumlist, product, (++), append, product, rem, True, Bool, False, reverse)
+import Prelude hiding (elem, sumlist, product, (++), append, product, rem, True, Bool, False, reverse, sum, mult,exp)
 
 data ListNat = Empty | Cons Nat ListNat
     deriving ( Eq , Show )
@@ -17,9 +17,9 @@ elem _ Empty = False
 elem x (Cons y ys) = if (x == y) then True else (elem x ys)
 
 -- Soma
--- sumlist :: ListNat -> Nat
--- sumlist Empty = O
--- sumlist (Cons y ys) = sum y (sumlist ys)
+sumlist :: ListNat -> Nat
+sumlist Empty = O
+sumlist (Cons y ys) = sum y (sumlist ys)
 
 -- Produto
 product :: ListNat -> Nat
@@ -65,5 +65,25 @@ allZero (Cons y ys) = if_then_else_2 (isZero y) (allZero ys) False
 anyZero :: ListNat -> Bool
 anyZero Empty = False  
 anyZero (Cons y ys) = if_then_else_2 (isZero y) True (allZero ys)
+
+-- Adicionar nat
+addNat :: Nat -> ListNat -> ListNat
+addNat y Empty = Empty
+addNat y (Cons x xs) = Cons (sum y x) (addNat y xs)
+
+-- Multiplicar nat
+multNat :: Nat -> ListNat -> ListNat
+multNat y Empty = Empty
+multNat y (Cons x xs) = Cons (mult y x) (multNat y xs)
+
+-- exponencial nat
+expNat :: Nat -> ListNat -> ListNat
+expNat y Empty = Empty
+expNat y (Cons x xs) = Cons (exp y x) (expNat y xs)
+
+
+
+
+
 
 

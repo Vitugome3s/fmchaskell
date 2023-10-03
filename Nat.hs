@@ -20,7 +20,7 @@ monus (S n) (S m) = monus n m
 -- Multiplicação
 mult :: Nat -> Nat -> Nat
 mult n O = O
-mult n (S m) = sum (mult m n) m
+mult n (S m) = sum (mult m n) n
 
 -- Exponenciação
 exp :: Nat -> Nat -> Nat
