@@ -49,3 +49,9 @@ isMul3 _ = False
 isZero :: Nat -> Bool
 isZero O = True
 isZero _ = False
+
+-- If then else bool
+
+if_then_else_2 :: Bool -> Bool -> Bool -> Bool
+if_then_else_2 True n _ = n
+if_then_else_2 False _ m = m
