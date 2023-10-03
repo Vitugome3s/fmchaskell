@@ -18,19 +18,19 @@ monus O m = O
 monus (S n) (S m) = monus n m
 
 -- Multiplicação
-mul :: Nat -> Nat -> Nat
-mul n O = O
-mul n (S m) = sum (mul m n) m
+mult :: Nat -> Nat -> Nat
+mult n O = O
+mult n (S m) = sum (mult m n) m
 
 -- Exponenciação
 exp :: Nat -> Nat -> Nat
 exp n O = S O
-exp n (S m) = mul n (exp n m)
+exp n (S m) = mult n (exp n m)
 
 -- Fatorial
 fact :: Nat -> Nat
 fact O = (S O)
-fact (S n) = mul (S n) (fact n)
+fact (S n) = mult (S n) (fact n)
 
 -- Fibonacci 
 fib :: Nat -> Nat
@@ -67,7 +67,7 @@ quot m n = quot' m n n
 rem :: Nat -> Nat -> Nat
 rem O n = O
 rem (S m) O = S(rem m O)
-rem m n = rem' m(mul n (quot m n))
+rem m n = rem' m(mult n (quot m n))
   where
     rem' :: Nat -> Nat -> Nat
     rem' (S m) (S n) = rem' m n 
@@ -84,28 +84,4 @@ gcd n m = gcd m (rem n m)
 
 -- Mínimo Multiplo Comum
 lcm :: Nat -> Nat -> (Nat, Nat)
-lcm n m = div (mul n m) (gcd n m)
-
-
--- Defina os operadores booleanos.
-module Bool where
-
-data Bool = False | True
-    deriving ( Eq , Show )
-
-
-if_then_else_ :: Bool -> Nat -> Nat -> Nat
-if_then_else_ False n m = n
-if_then_else_ True n m = m 
-
--- Menor ou igual que
-leq :: Nat -> Nat -> Bool
-leq O m = True
-leq n O = False
-leq (S n) (S m) = leq n m
-
-
-
-
-
-
+lcm n m = div (mult n m) (gcd n m)
