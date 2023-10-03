@@ -56,3 +56,14 @@ anyOd :: ListNat -> Bool
 anyOd Empty = False  
 anyOd (Cons y ys) = if_then_else_2 (od y) True (anyOd ys)
 
+--- Todos Zero?
+allZero :: ListNat -> Bool
+allZero Empty = True
+allZero (Cons y ys) = if_then_else_2 (isZero y) (allZero ys) False
+
+-- Algum Zero?
+anyZero :: ListNat -> Bool
+anyZero Empty = False  
+anyZero (Cons y ys) = if_then_else_2 (isZero y) True (allZero ys)
+
+
